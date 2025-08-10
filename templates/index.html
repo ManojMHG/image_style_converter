@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Style Converter</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>🎨 Image Style Converter</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required><br><br>
+        <select name="style">
+            <option value="black_white">Black & White</option>
+            <option value="sketch">Sketch</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="sepia">Sepia</option>
+            <option value="inverted">Inverted</option>
+            <option value="hdr">HDR</option>
+            <option value="oil_painting">Oil Painting</option>
+            <option value="pencil_color">Pencil Color</option>
+            <option value="ghibli_style">Ghibli Style</option>
+            <option value="neural_style">Neural Style</option>
+        </select><br><br>
+        <button type="submit">Convert</button>
+    </form>
+    {% if output_image %}
+<div class="result">
+    <h2>🖼️ Converted Image:</h2>
+    <img src="{{ url_for('static', filename='uploads/' + output_image) }}" alt="Converted Image">
+    <br><br>
+    <a href="{{ url_for('static', filename='uploads/' + output_image) }}" download>
+        <button class="download-btn">⬇️ Download Image</button>
+    </a>
+</div>
+{% endif %}
+    {% if output_image %}
+        <h2>Converted Image:</h2>
+        <img src="{{ url_for('static', filename='uploads/' + output_image) }}">
+    {% endif %}
+</body>
+</html>
